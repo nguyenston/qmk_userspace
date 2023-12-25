@@ -1,4 +1,8 @@
 {
     "userspace_version": "1.0",
-    "build_targets": []
+    "build_targets": [
+        ["preonic/rev3_drop", "nguyenston"],
+        ["keebio/levinson/rev3", "nguyenston"],
+        ["crkbd/rev1", "nguyenston"]
+    ]
 }
