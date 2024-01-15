@@ -32,6 +32,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
             break;
+        case NAV:
+            if (record->event.pressed) {
+                layer_on(_NAV);
+            } else {
+                layer_off(_NAV);
+            }
+            return false;
+            break;
         case BACKLIT:
             if (record->event.pressed) {
                 register_code(KC_RSFT);

@@ -16,55 +16,56 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "keycodes.h"
 #include QMK_KEYBOARD_H
+#include "nguyenston.h"
 
+#define LAYOUT_wrapper(...) LAYOUT_split_3x6_3(__VA_ARGS__)
+
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(1),  KC_SPC,     KC_ENT,   MO(2), KC_RALT
-                                      //`--------------------------'  `--------------------------'
+    [_QWERTY] = LAYOUT_wrapper(
+        __QWERTY_L1__,                   __QWERTY_R1__,
+        __QWERTY_L2__,                   __QWERTY_R2__,
+        __QWERTY_L3__,                   __QWERTY_R3__,
+        XXXXXXX, __QWERTY_LT__, __QWERTY_RT__, XXXXXXX
+    ),
 
-  ),
+    [_GAMING] = LAYOUT_wrapper(
+        __GAMING_L1__,                   __GAMING_R1__,
+        __GAMING_L2__,                   __GAMING_R2__,
+        __GAMING_L3__,                   __GAMING_R3__,
+        KC_LALT, __GAMING_LT__, __GAMING_RT__, XXXXXXX
+    ),
 
-    [1] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_BSPC,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3), KC_RALT
-                                      //`--------------------------'  `--------------------------'
-  ),
+    [_LOWER] = LAYOUT_wrapper(
+        __LOWER_L1__,                   __LOWER_R1__,
+        __LOWER_L2__,                   __LOWER_R2__,
+        __LOWER_L3__,                   __LOWER_R3__,
+        XXXXXXX, __LOWER_LT__, __LOWER_RT__, XXXXXXX
+    ),
 
-    [2] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(3),  KC_SPC,     KC_ENT, _______, KC_RALT
-                                      //`--------------------------'  `--------------------------'
-  ),
+    [_RAISE] = LAYOUT_wrapper(
+        __RAISE_L1__,                   __RAISE_R1__,
+        __RAISE_L2__,                   __RAISE_R2__,
+        __RAISE_L3__,                   __RAISE_R3__,
+        XXXXXXX, __RAISE_LT__, __RAISE_RT__, XXXXXXX
+    ),
 
-    [3] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
-                                      //`--------------------------'  `--------------------------'
-  )
+    [_NAV] = LAYOUT_wrapper(
+        __NAV_L1__,                   __NAV_R1__,
+        __NAV_L2__,                   __NAV_R2__,
+        __NAV_L3__,                   __NAV_R3__,
+        XXXXXXX, __NAV_LT__, __NAV_RT__, XXXXXXX
+    ),
+
+    [_ADJUST] = LAYOUT_wrapper(
+        __ADJUST_L1__,                   __ADJUST_R1__,
+        __ADJUST_L2__,                   __ADJUST_R2__,
+        __ADJUST_L3__,                   __ADJUST_R3__,
+        XXXXXXX, __ADJUST_LT__, __ADJUST_RT__, XXXXXXX
+    )
 };
+
+// clang-format off
+// just update
