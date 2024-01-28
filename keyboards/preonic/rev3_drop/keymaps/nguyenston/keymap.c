@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   __ADJUST_L1__,                                                                         __ADJUST_R1__,
   __ADJUST_L2__,                                                                         __ADJUST_R2__,
   __ADJUST_L3__,                                                                         __ADJUST_R3__,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, __ADJUST_LT__, __ADJUST_RT__, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
+  RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, __ADJUST_LT__, __ADJUST_RT__, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT
 )
 
 };
